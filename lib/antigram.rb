@@ -1,0 +1,2 @@
+class Antigram
+end
