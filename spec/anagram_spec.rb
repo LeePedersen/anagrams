@@ -13,6 +13,10 @@ describe('Words#anagram') do
     word = Words.new("Orchestra", "Carthorse")
     expect(word.anagram?).to(eq(true))
   end
+  it("accounts for special characters and white space") do
+    word = Words.new("debit card", "bad credit")
+    expect(word.anagram?).to(eq(true))
+  end
 end
 
 describe('Words#antigram') do
@@ -32,5 +36,6 @@ describe('Words#not_real_words') do
     expect(word.not_real_words).to(eq(["sdfg"]))
   end
 end
+
 
 # describe('Words#antigram') do

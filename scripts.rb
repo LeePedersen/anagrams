@@ -18,7 +18,9 @@ puts `clear`
 # sleep 0.5
 
 not_real = words.not_real_words.join(", ")
-puts "Not a real word: #{not_real}"
+if not_real.length > 0
+  puts "Not a real word: #{not_real}"
+end
 
 if words.anagram?()
   puts "#{words.words[0]} and #{words.words[1]} are anagrams"

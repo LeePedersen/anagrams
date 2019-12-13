@@ -6,18 +6,28 @@ class Words
 
   def initialize(word_a, word_b)
     @words = [word_a.downcase, word_b.downcase]
+    @modified_words = [word_a.downcase, word_b.downcase]
+    @modified_words.each do |word|
+      word.each_char do |chr|
+        if !(chr =~ /[[:alpha:]]/)
+          @modified_words.delete(word)
+          word = word.delete(chr)
+          @modified_words.prepend(word)
+        end
+      end
+    end
   end
 
   def anagram?()
-    if @words[0].chars.sort.join.eql? @words[1].chars.sort.join
+    if @modified_words[0].chars.sort.join.eql? @modified_words[1].chars.sort.join
       return true
     end
     false
   end
 
   def antigram?()
-    @words[0].each_char do |chr|
-      if @words[1].include?(chr)
+    @modified_words[0].each_char do |chr|
+      if @modified_words[1].include?(chr)
         return false
       end
     end
