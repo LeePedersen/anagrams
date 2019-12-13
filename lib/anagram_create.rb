@@ -26,4 +26,14 @@ class Anagram_create
       return "No anagrams"
     end
   end
+
+  def letter_game_cheats()
+    cheats = []
+    @word_bank.each do |word|
+      if word.include?(input_word)
+        cheats.push(word)
+      end
+    end
+    return cheats.join(", ")
+  end
 end
