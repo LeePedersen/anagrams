@@ -9,11 +9,13 @@ class Words
   end
 
   def anagram()
+    result = ""
     if @words[0].chars.sort.join.eql? @words[1].chars.sort.join
-      true
+      result.concat("#{@words[0]} and #{@words[1]} are anagrams")
     else
-      false
+      result.concat("#{@words[0]} and #{@words[1]} are not anagrams")
     end
+    return result
   end
 
   def antigram()
@@ -26,16 +28,22 @@ class Words
     if result == ""
       result.concat("#{@words[0]} and #{@words[1]} are antigrams")
     end
+    not_real = not_real_words().join(" ")
+    if not_real.length > 0
+      result.concat(". However, this/these words are not real: #{not_real}")
+    end
     return result
   end
 
   def not_real_words()
     "aeiouy".each_char do |chr|
-      if !@words[0].include?(chr)
-        return "#{word[0]} is not a real word"
-      elsif !@words[1].include?(chr)
-        return "#{word[1]} is not a real word"
+      not_real = []
+      @words.each do |word|
+        if !word.include?(chr)
+          not_real.push(word)
+        end
       end
+      return not_real
     end
 
     # if speller.correct?(@words[0])
