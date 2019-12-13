@@ -1,11 +1,11 @@
 # require 'ffi/aspell'
 # speller = FFI::Aspell::Speller.new('en_US')
 
-class Words
+class Anagrams
   attr_accessor(:words)
 
   def initialize(word_a, word_b)
-    @words = [word_a.downcase, word_b.downcase]
+    @words = [word_a, word_b]
     @modified_words = [word_a.downcase, word_b.downcase]
     @modified_words.each do |word|
       word.each_char do |chr|
