@@ -1,6 +1,10 @@
 require('./lib/anagram_check')
 require('./lib/anagram_create')
 
+puts `whoami > info.txt`
+name = File.read('info.txt').split
+puts "Hello, #{name[0].capitalize}"
+
 puts "Enter 1 to check if two words are anagrams, or 2 to find possible anagrams for a word"
 script = gets.chomp
 
@@ -19,7 +23,7 @@ if script == "1"
     puts "Not a real word: #{not_real}"
   end
 
-  if words.anagram?() # maybe get rid of parentheses
+  if words.anagram?
     puts "#{words.words[0]} and #{words.words[1]} are anagrams"
   else
     puts "#{words.words[0]} and #{words.words[1]} are not anagrams"

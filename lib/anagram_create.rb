@@ -20,10 +20,10 @@ class Anagram_create
         @anagram_count += 1
       end
     end
-    if @anagram_count > 0
+    if @anagram_count > 1
       return anagrams.join(", ")
     else
-      return @anagram_count
+      return "No anagrams"
     end
   end
 end
