@@ -1,6 +1,6 @@
-require './lib/anagram_check'
+require './lib/anagrams'
 
-class Anagram_create
+class Wordplay
   attr_accessor(:word_bank)
   attr_accessor(:input_word)
   attr_accessor(:anagram_count)
@@ -35,5 +35,15 @@ class Anagram_create
       end
     end
     return cheats.join(", ")
+  end
+
+  def scrabble()
+    options = []
+    @word_bank.each do |word|
+      if @input_word.chars.sort.join.include?(word.chars.sort.join)
+        options.push(word)
+      end
+    end
+    return options.join(", ")
   end
 end

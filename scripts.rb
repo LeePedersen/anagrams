@@ -1,11 +1,11 @@
-require('./lib/anagram_check')
-require('./lib/anagram_create')
+require('./lib/anagrams')
+require('./lib/wordplay')
 
 puts `whoami > info.txt`
 name = File.read('info.txt').split
 # puts "Hello, #{name[0].capitalize}"
 
-puts "Enter 1 to check if two words are anagrams, 2 to find possible anagrams for a word, or 3 to find words that contain your word"
+puts "Enter 1 to check if two words are anagrams, 2 to find possible anagrams for a word, 3 to find words that contain your word, or 4 to cheat at scrabble"
 script = gets.chomp
 
 word_bank = File.read('/usr/share/dict/words').split
@@ -38,14 +38,23 @@ if script == "1"
 elsif script == "2"
   puts "Enter a word to find its anagrams"
   word = gets.chomp
-  find_anagrams = Anagram_create.new(word, word_bank)
+  find_anagrams = Wordplay.new(word, word_bank)
   puts find_anagrams.find
 
 elsif script == "3"
   puts "Enter some letters to see what words they're a part of"
   word = gets.chomp
-  find_words = Anagram_create.new(word, word_bank)
+  find_words = Wordplay.new(word, word_bank)
   puts find_words.letter_game_cheats
+
+elsif script == "4"
+  puts "it's unethical to cheat at scrabble, #{name[0]}"
+  sleep 3
+  puts "but if you really want to, enter your 7 letters"
+  word = gets.chomp
+  scrabble_words = Wordplay.new(word, word_bank)
+  puts scrabble_words.scrabble
+
 else
   puts "Dammit #{name[0]} you had one job"
 end

@@ -1,6 +1,3 @@
-# require 'ffi/aspell'
-# speller = FFI::Aspell::Speller.new('en_US')
-
 class Anagrams
   attr_accessor(:words)
 

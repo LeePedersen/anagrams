@@ -1,4 +1,4 @@
-require 'anagram_check'
+require 'anagrams'
 
 describe('Anagrams#anagram') do
   it("returns false when given words are not anagrams") do
