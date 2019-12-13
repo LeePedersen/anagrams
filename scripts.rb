@@ -1,34 +1,40 @@
-require('./lib/anagram')
+require('./lib/anagram_check')
+require('./lib/anagram_create')
 
-puts "This is the anagram checker. Please enter your first word"
-word_a = gets.chomp
-puts "Enter your second word"
-word_b = gets.chomp
+puts "Enter 1 to check if two words are anagrams, or 2 to find possible anagrams for a word"
+script = gets.chomp
 
-words = Words.new(word_a, word_b)
+if script == "1"
+  puts "This is the anagram checker. Please enter your first word"
+  word_a = gets.chomp
+  puts "Enter your second word"
+  word_b = gets.chomp
 
-puts `clear`
-# puts "Checking anagrams."
-# sleep 0.5
-# puts `clear`
-# puts "Checking anagrams.."
-# sleep 0.5
-# puts `clear`
-# puts "Checking anagrams..."
-# sleep 0.5
+  words = Anagrams.new(word_a, word_b)
 
-not_real = words.not_real_words.join(", ")
-if not_real.length > 0
-  puts "Not a real word: #{not_real}"
+  puts `clear`
+
+  not_real = words.not_real_words.join(", ")
+  if not_real.length > 0
+    puts "Not a real word: #{not_real}"
+  end
+
+  if words.anagram?() # maybe get rid of parentheses
+    puts "#{words.words[0]} and #{words.words[1]} are anagrams"
+  else
+    puts "#{words.words[0]} and #{words.words[1]} are not anagrams"
+    if words.antigram?()
+      puts "#{words.words[0]} and #{words.words[1]} have no letter matches and are antigrams"
+    else
+      puts "#{words.words[0]} and #{words.words[1]} have some letter matches and so are not antigrams"
+    end
+  end
 end
 
-if words.anagram?()
-  puts "#{words.words[0]} and #{words.words[1]} are anagrams"
-else
-  puts "#{words.words[0]} and #{words.words[1]} are not anagrams"
-  if words.antigram?()
-    puts "#{words.words[0]} and #{words.words[1]} have no letter matches and are antigrams"
-  else
-    puts "#{words.words[0]} and #{words.words[1]} have some letter matches and so are not antigrams"
-  end
+if script == "2"
+  puts "Enter a word to find its anagrams"
+  word = gets.chomp
+  word_bank = File.read('/usr/share/dict/words').split
+  find_anagrams = Anagram_create.new(word, word_bank)
+  puts find_anagrams.find
 end
