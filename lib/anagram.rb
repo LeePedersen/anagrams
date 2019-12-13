@@ -19,38 +19,38 @@ class Words
   end
 
   def antigram()
-    result = ""
+    result = true
+    results = ""
     @words[0].each_char do |chr|
       if @words[1].include?(chr)
-        result.concat("#{@words[0]} and #{@words[1]} are not antigrams")
+        result = false
       end
     end
-    if result == ""
-      result.concat("#{@words[0]} and #{@words[1]} are antigrams")
+    if result
+      results.concat("#{@words[0]} and #{@words[1]} are antigrams")
+    else
+      results.concat("#{@words[0]} and #{@words[1]} are not antigrams")
     end
-    not_real = not_real_words().join(" ")
+    not_real = not_real_words().join(", ")
     if not_real.length > 0
-      result.concat(". However, this/these words are not real: #{not_real}")
+      results.concat(". Also, this/these words are not real: #{not_real}")
     end
-    return result
+    return results
   end
 
   def not_real_words()
-    "aeiouy".each_char do |chr|
-      not_real = []
-      @words.each do |word|
-        if !word.include?(chr)
-          not_real.push(word)
+    real = false
+    not_real = []
+    @words.each do |word|
+      "aeiouy".each_char do |chr|
+        if word.include?(chr)
+          real = true
         end
       end
-      return not_real
+      if real == false
+        not_real.push(word)
+      end
     end
-
-    # if speller.correct?(@words[0])
-    #   true
-    # else
-    #   false
-    # end
-
+    return not_real
   end
 end
