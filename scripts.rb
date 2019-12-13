@@ -16,5 +16,17 @@ puts `clear`
 # puts `clear`
 # puts "Checking anagrams..."
 # sleep 0.5
-puts words.anagram()
-puts words.antigram()
+
+not_real = words.not_real_words.join(", ")
+puts "Not a real word: #{not_real}"
+
+if words.anagram?()
+  puts "#{words.words[0]} and #{words.words[1]} are anagrams"
+else
+  puts "#{words.words[0]} and #{words.words[1]} are not anagrams"
+  if words.antigram?()
+    puts "#{words.words[0]} and #{words.words[1]} have no letter matches and are antigrams"
+  else
+    puts "#{words.words[0]} and #{words.words[1]} have some letter matches and so are not antigrams"
+  end
+end

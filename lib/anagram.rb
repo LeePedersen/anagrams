@@ -8,40 +8,26 @@ class Words
     @words = [word_a.downcase, word_b.downcase]
   end
 
-  def anagram()
-    result = ""
+  def anagram?()
     if @words[0].chars.sort.join.eql? @words[1].chars.sort.join
-      result.concat("#{@words[0]} and #{@words[1]} are anagrams")
-    else
-      result.concat("#{@words[0]} and #{@words[1]} are not anagrams")
+      return true
     end
-    return result
+    false
   end
 
-  def antigram()
-    result = true
-    results = ""
+  def antigram?()
     @words[0].each_char do |chr|
       if @words[1].include?(chr)
-        result = false
+        return false
       end
     end
-    if result
-      results.concat("#{@words[0]} and #{@words[1]} are antigrams")
-    else
-      results.concat("#{@words[0]} and #{@words[1]} are not antigrams")
-    end
-    not_real = not_real_words().join(", ")
-    if not_real.length > 0
-      results.concat(". Also, this/these words are not real: #{not_real}")
-    end
-    return results
+    true
   end
 
   def not_real_words()
-    real = false
     not_real = []
     @words.each do |word|
+      real = false
       "aeiouy".each_char do |chr|
         if word.include?(chr)
           real = true
