@@ -3,12 +3,18 @@ require('./lib/wordplay')
 
 puts `whoami > info.txt`
 name = File.read('info.txt').split
-# puts "Hello, #{name[0].capitalize}"
 
 puts "Enter 1 to check if two words are anagrams, 2 to find possible anagrams for a word, 3 to find words that contain your word, or 4 to cheat at scrabble"
 script = gets.chomp
 
-word_bank = File.read('/usr/share/dict/words').split
+puts "If you're not running linux and/or you don't have a wordbank in /usr/share/dict/words, please enter the file path of a wordbank. If you are, enter 1"
+
+input = gets.chomp
+if input != "1"
+  word_bank = File.read("#{input}").split
+else
+  word_bank = File.read('/usr/share/dict/words').split
+end
 
 if script == "1"
   puts "This is the anagram checker. Please enter your first word"

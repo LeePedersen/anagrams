@@ -40,7 +40,7 @@ class Wordplay
   def scrabble()
     options = []
     @word_bank.each do |word|
-      if @input_word.chars.sort.join.include?(word.chars.sort.join)
+      if @input_word.chars.sort.join.include?(word.chars.sort.join) && word.length > 1
         options.push(word)
       end
     end

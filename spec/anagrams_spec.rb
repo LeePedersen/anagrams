@@ -36,6 +36,3 @@ describe('Anagrams#not_real_words') do
     expect(word.not_real_words).to(eq(["sdfg"]))
   end
 end
-
-
-# describe('Anagrams#antigram') do

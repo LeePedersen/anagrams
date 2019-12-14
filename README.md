@@ -8,6 +8,7 @@ _This script checks if two words are anagrams of eachother, checks if they're an
 
 ## Known Bugs
 _Some features only work on linux systems_
+_Scrabble method will not give you all possible words, just some suggestions_
 
 ## Setup
 * _Clone to machine_
