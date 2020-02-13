@@ -7,8 +7,7 @@
 _This script checks if two words are anagrams of eachother, checks if they're antigrams, returns a list of anagrams for an inputted word, and returns a list of words that a string is part of_
 
 ## Known Bugs
-_Some features only work on linux systems_
-_Scrabble method will not give you all possible words, just some suggestions_
+_Scrabble method will not return all possible letter combinations that are words_
 
 ## Setup
 * _Clone to machine_
