@@ -4,11 +4,11 @@ require('./lib/wordplay')
 puts `whoami > info.txt`
 name = File.read('info.txt').split
 
-puts "If you don't have a wordbank in /usr/share/dict/words, please enter the file path of a wordbank. If you are, enter 1"
+puts "If you don't have a wordbank in /usr/share/dict/words, please enter the file path of a wordbank. If you do, enter 1"
 
 wordbank_input = gets.chomp
 if wordbank_input != "1"
-  word_bank = File.read("#{input}").split
+  word_bank = File.read("#{wordbank_input}").split
 else
   word_bank = File.read('/usr/share/dict/words').split
 end
@@ -69,12 +69,12 @@ while exit == false
   else
     puts "#{name[0]} you had one job"
   end
-  
+
   puts "Exit? (y/n)"
-  
+
   exit_input = gets.chomp
-  
+
   if exit_input == "y"
-    exit == true
+    exit = true
   end
 end
